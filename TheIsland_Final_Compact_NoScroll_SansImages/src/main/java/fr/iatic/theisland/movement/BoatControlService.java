@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * Calcule quels joueurs contrôlent un bateau.
- */
+
 public final class BoatControlService {
 
     public boolean canPlayerMoveBoat(Player player, Boat boat) {
