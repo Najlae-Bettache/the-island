@@ -23,9 +23,7 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
-/**
- * Écran d'accueil du jeu.
- */
+
 public final class WelcomeFrame extends JFrame {
 
     public WelcomeFrame() {
@@ -179,7 +177,7 @@ public final class WelcomeFrame extends JFrame {
             g2.setColor(new Color(235, 87, 54, 210));
             g2.fillOval(vx - 15, vy - 45, 30, 18);
 
-            // Vagues
+            
             g2.setColor(new Color(255, 255, 255, 65));
             for (int i = 0; i < 7; i++) {
                 int x = 80 + i * 115;
