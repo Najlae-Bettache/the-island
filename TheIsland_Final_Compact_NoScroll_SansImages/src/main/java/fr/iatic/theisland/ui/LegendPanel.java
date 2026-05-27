@@ -10,9 +10,7 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Font;
 
-/**
- * Petit panneau d'informations utile pour la démonstration.
- */
+
 public final class LegendPanel extends JPanel {
 
     public LegendPanel(PieceState state) {
