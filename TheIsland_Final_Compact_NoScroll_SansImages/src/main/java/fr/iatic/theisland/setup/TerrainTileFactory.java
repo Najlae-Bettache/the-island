@@ -9,9 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Fabrique les 40 tuiles de terrain avec effets cachés distribués selon les règles du jeu.
- */
+
 public final class TerrainTileFactory {
 
     private TerrainTileFactory() { }
@@ -48,8 +46,7 @@ public final class TerrainTileFactory {
 
         int volcanoRank = mountainIndices.indexOf(volcanoIndex);
 
-        // Conserve l'aléatoire, mais évite une démo frustrante où le volcan est
-        // presque toujours découvert tout à la fin de la phase montagne.
+        
         if (volcanoRank >= mountainIndices.size() - 2) {
             Random random = new Random();
             int targetRank = random.nextInt(Math.max(1, mountainIndices.size() / 2));
@@ -57,11 +54,7 @@ public final class TerrainTileFactory {
         }
     }
 
-    /**
-     * Variante de mélange pour la version graphique : le volcan reste aléatoire,
-     * mais il n'est pas placé dans une montagne trop centrale/inaccessible.
-     * Cela évite qu'il apparaisse presque toujours comme toute dernière tuile.
-     */
+   
     public static List<TerrainTile> createShuffledTerrainTilesWithEarlyVolcano() {
         List<TerrainTile> tiles = createShuffledTerrainTiles();
 
@@ -82,8 +75,7 @@ public final class TerrainTileFactory {
             return tiles;
         }
 
-        // Positions de la zone centrale qui sont plus souvent accessibles au début de la phase montagne.
-        // Le volcan reste caché sous une montagne, mais il ne bloque pas toujours la fin du test.
+       
         int[] preferred = {0, 1, 2, 3, 4, 5, 7, 8, 10, 12, 15, 18, 21, 24, 27, 31, 34, 37, 38, 39};
 
         for (int position : preferred) {
@@ -95,8 +87,7 @@ public final class TerrainTileFactory {
             }
         }
 
-        // Sécurité : si aucune position préférée n'est une montagne, on place le volcan
-        // dans la première moitié des montagnes.
+        
         int target = mountainPositions.get(Math.max(0, mountainPositions.size() / 3));
         if (target != volcanoIndex) {
             Collections.swap(tiles, volcanoIndex, target);
@@ -105,7 +96,7 @@ public final class TerrainTileFactory {
     }
 
 
-    /** 16 tuiles Plage. */
+   
     private static List<TerrainTile> beachTiles() {
         List<TerrainTile> t = new ArrayList<>(16);
         add(t, TerrainType.BEACH, TileEffect.SHARK_APPEARS, 3);
@@ -120,7 +111,7 @@ public final class TerrainTileFactory {
         return t;
     }
 
-    /** 16 tuiles Forêt. */
+ 
     private static List<TerrainTile> forestTiles() {
         List<TerrainTile> t = new ArrayList<>(16);
         add(t, TerrainType.FOREST, TileEffect.SHARK_APPEARS, 2);
@@ -137,7 +128,7 @@ public final class TerrainTileFactory {
         return t;
     }
 
-    /** 8 tuiles Montagne. */
+   
     private static List<TerrainTile> mountainTiles() {
         List<TerrainTile> t = new ArrayList<>(8);
         add(t, TerrainType.MOUNTAIN, TileEffect.SHARK_APPEARS, 1);
