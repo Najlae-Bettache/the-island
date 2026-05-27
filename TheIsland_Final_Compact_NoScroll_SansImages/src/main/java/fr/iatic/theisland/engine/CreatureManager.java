@@ -24,18 +24,10 @@ import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * Mission 4 — Déplacement des créatures et de leurs effets.
- *
- * Règles :
- * - Serpent (1 case)  : tue nageurs + bateaux occupés, bateau vide reste.
- * - Requin  (1-2 cas) : s'arrête sur les nageurs et les tue, ignore bateaux.
- * - Baleine (1-3 cas) : chavire bateaux occupés → passagers = nageurs.
- *   Si requin présent sur la même case → ces nageurs sont aussi tués.
- */
+
 public final class CreatureManager {
 
-    /** Place les 5 serpents sur leurs cases de départ. */
+    
     public void initializeSerpents(GameState gs) {
         Objects.requireNonNull(gs);
         for (HexCoordinate spawn : gs.getPieceState().getBoard().getSeaSerpentSpawnCoordinates()) {
@@ -43,14 +35,12 @@ public final class CreatureManager {
         }
     }
 
-    /** Lance le dé et retourne le type de créature obtenu. */
+   
     public CreatureType rollDice() {
         return Dice.roll();
     }
 
-    /**
-     * Déplace {@code creature} vers {@code target} et applique les effets.
-     */
+    
     public ActionResult moveCreature(GameState gs, Creature creature, HexCoordinate target) {
         Objects.requireNonNull(gs,       "L'état du jeu est obligatoire.");
         Objects.requireNonNull(creature, "La créature est obligatoire.");
@@ -76,9 +66,7 @@ public final class CreatureManager {
         };
     }
 
-    // ── Effets ───────────────────────────────────────────────────────────────
-
-    /** Serpent : tue nageurs + bateaux occupés, laisse les bateaux vides. */
+    
     private ActionResult applySerpent(GameState gs, HexCoordinate target) {
         PieceState ps = gs.getPieceState();
         int killed = 0;
@@ -98,7 +86,7 @@ public final class CreatureManager {
                 : ActionResult.success("🐍 Le serpent de mer frappe ! " + killed + " pion(s) éliminé(s).");
     }
 
-    /** Requin : tue uniquement les nageurs (les bateaux sont ignorés). */
+    
     private ActionResult applyShark(GameState gs, HexCoordinate target) {
         List<Explorer> swimmers = new ArrayList<>(gs.getPieceState().getSwimmersAt(target));
         if (swimmers.isEmpty())
@@ -117,7 +105,7 @@ public final class CreatureManager {
         return ActionResult.success("🦈 Le requin attaque ! " + swimmers.size() + " nageur(s) dévoré(s).");
     }
 
-    /** Baleine : chavire les bateaux occupés. Si requin présent → nageurs tués aussi. */
+    
     private ActionResult applyWhale(GameState gs, Creature whale, HexCoordinate target) {
         PieceState ps = gs.getPieceState();
         Boat victim = allBoatsAt(gs, target).stream().filter(b -> !b.isEmpty()).findFirst().orElse(null);
@@ -163,7 +151,7 @@ public final class CreatureManager {
         return false;
     }
 
-    // ── Utilitaires ──────────────────────────────────────────────────────────
+
 
     private List<Boat> allBoatsAt(GameState gs, HexCoordinate coord) {
         Map<String, Boat> unique = new LinkedHashMap<>();
@@ -176,7 +164,7 @@ public final class CreatureManager {
         return new ArrayList<>(unique.values());
     }
 
-    /** BFS pour calculer la distance hexagonale. */
+    
     private int bfsDistance(Board board, HexCoordinate from, HexCoordinate to) {
         if (from.equals(to)) return 0;
         Set<HexCoordinate> visited = new HashSet<>();
