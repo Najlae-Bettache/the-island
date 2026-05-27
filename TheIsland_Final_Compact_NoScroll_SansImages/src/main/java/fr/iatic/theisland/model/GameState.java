@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * État global de la partie pour les missions 3 et 4 :
- * créatures, tuiles en main, bateaux bonus et fin de jeu.
- */
+
 public final class GameState {
 
     private final PieceState pieceState;
@@ -32,10 +29,10 @@ public final class GameState {
         }
     }
 
-    // ── Accesseur ─────────────────────────────────────────────────────────────
+    
     public PieceState getPieceState() { return pieceState; }
 
-    // ── Créatures ─────────────────────────────────────────────────────────────
+    
     public void addCreature(Creature c) {
         creatures.add(Objects.requireNonNull(c));
     }
@@ -78,7 +75,7 @@ public final class GameState {
         availableBoats--; return true;
     }
 
-    // ── Bateaux bonus ─────────────────────────────────────────────────────────
+    
     public void registerExtraBoat(Boat boat) {
         Objects.requireNonNull(boat, "Le bateau est obligatoire.");
         extraBoats.put(boat.getId(), boat);
@@ -94,7 +91,7 @@ public final class GameState {
                 .toList();
     }
 
-    // ── Tuiles en main ────────────────────────────────────────────────────────
+    
     public List<TerrainTile> getHandTiles(Player player) {
         return Collections.unmodifiableList(
                 handTiles.getOrDefault(player.getId(), List.of()));
@@ -125,7 +122,7 @@ public final class GameState {
         return false;
     }
 
-    // ── Fin de jeu ────────────────────────────────────────────────────────────
+    
     public boolean isGameOver() { return gameOver; }
 
     public void triggerGameOver() {
