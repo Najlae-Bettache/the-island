@@ -1,9 +1,6 @@
 package fr.iatic.theisland.model;
 
-/**
- * Effet caché d'une tuile de terrain, révélé lors du retrait.
- * Vert = immédiat, Rouge = à jouer en main.
- */
+
 public enum TileEffect {
     NONE,
     // Contour vert – immédiats
