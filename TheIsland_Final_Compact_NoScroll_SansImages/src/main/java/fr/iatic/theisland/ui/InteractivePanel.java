@@ -27,9 +27,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
 
-/**
- * Onglet principal du jeu complet.
- */
+
 public final class InteractivePanel extends JPanel {
 
     private final InteractionController controller;
@@ -53,7 +51,7 @@ public final class InteractivePanel extends JPanel {
         this.buttonsPanel= new JPanel();
         this.stateArea   = new JEditorPane();
 
-        // Passer GameState au panneau graphique
+       
         this.boardPanel  = new InteractiveBoardPanel(
                 board, pieceState, controller.getGameState(), controller, this::refreshTexts);
 
@@ -71,7 +69,7 @@ public final class InteractivePanel extends JPanel {
         refreshTexts();
     }
 
-    // ── Mise en page ───────────────────────────────────────────────────────────
+   
 
     private JPanel createTopPanel() {
         JPanel top = new JPanel(new BorderLayout(10, 10));
@@ -131,7 +129,7 @@ public final class InteractivePanel extends JPanel {
         return side;
     }
 
-    // ── Rafraîchissement ──────────────────────────────────────────────────────
+ 
 
     private void refreshTexts() {
         phaseLabel.setText("Phase : " + describePhase(controller.getPhase()));
@@ -181,8 +179,7 @@ public final class InteractivePanel extends JPanel {
         };
     }
 
-    // ── Boutons dynamiques ─────────────────────────────────────────────────────
-
+   
     private void rebuildButtons() {
         buttonsPanel.removeAll();
         DemoPhase phase = controller.getPhase();
@@ -211,7 +208,7 @@ public final class InteractivePanel extends JPanel {
             addBtn("Passer (pas de tuile)", e -> { controller.skipHandTilePhase(); refreshTexts(); });
         }
 
-        // Mission 2 : joueur suivant (fin de déplacements → retrait)
+       
         if (phase == DemoPhase.MOVEMENT) {
             addBtn("Terminer les déplacements", e -> { controller.nextPlayer(); refreshTexts(); });
             if (controller.getSelectionKind() == SelectionKind.PASSENGER) {
@@ -219,24 +216,24 @@ public final class InteractivePanel extends JPanel {
             }
         }
 
-        // Indication pendant TILE_REMOVAL
+       
         if (phase == DemoPhase.TILE_REMOVAL) {
             JButton info = new JButton("Cliquez une tuile surlignée");
             info.setEnabled(false);
             buttonsPanel.add(info);
         }
 
-        // Mission 4 : lancer le dé
+      
         if (phase == DemoPhase.CREATURE_DICE) {
             addBtn("Lancer le dé", e -> { controller.rollCreatureDice(); refreshTexts(); });
         }
 
-        // Mission 4 : passer le déplacement créature
+    
         if (phase == DemoPhase.CREATURE_MOVE) {
             addBtn("Passer le déplacement", e -> { controller.skipCreatureMove(); refreshTexts(); });
         }
 
-        // Annuler sélection (toujours présent sauf fin de partie)
+       
         if (phase != DemoPhase.GAME_OVER) {
             addBtn("Annuler sélection", e -> { controller.cancelSelection(); refreshTexts(); });
         }
@@ -281,8 +278,7 @@ public final class InteractivePanel extends JPanel {
         JOptionPane.showMessageDialog(this, message, "Aide rapide", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    // ── Tableau de bord ────────────────────────────────────────────────────────
-
+    
     private void rebuildStateArea() {
     PieceState state = controller.getState();
     GameState  gs    = controller.getGameState();
