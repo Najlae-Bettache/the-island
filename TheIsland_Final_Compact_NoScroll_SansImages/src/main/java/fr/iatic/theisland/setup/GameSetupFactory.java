@@ -10,15 +10,13 @@ import fr.iatic.theisland.model.PlayerColor;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Crée les joueurs, explorateurs et bateaux nécessaires à la partie.
- */
+
 public final class GameSetupFactory {
 
     private static final List<Integer> TREASURE_VALUES = List.of(1, 1, 1, 2, 2, 3, 3, 4, 5, 6);
 
     private GameSetupFactory() {
-        // Classe utilitaire.
+        
     }
 
     public static PieceState createFourPlayerPieceState(Board board) {
