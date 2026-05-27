@@ -16,9 +16,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Font;
 
-/**
- * Fenêtre principale du jeu complet.
- */
+
 public final class MainFrame extends JFrame {
 
     public MainFrame(Board board, PieceState pieceState) {
