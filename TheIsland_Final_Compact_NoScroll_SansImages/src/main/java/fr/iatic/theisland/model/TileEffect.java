@@ -3,13 +3,13 @@ package fr.iatic.theisland.model;
 
 public enum TileEffect {
     NONE,
-    // Contour vert – immédiats
+   
     SHARK_APPEARS,
     WHALE_APPEARS,
     BOAT_APPEARS,
     WHIRLPOOL,
     VOLCANO,
-    // Contour rouge – conservés en main
+
     DOLPHIN,
     WIND,
     MOVE_SERPENT,
