@@ -11,9 +11,7 @@ import fr.iatic.theisland.model.PieceState;
 
 import java.util.Objects;
 
-/**
- * Règles de déplacements des explorateurs et des bateaux.
- */
+
 public final class MovementService {
 
     private final BoatControlService boatControlService;
