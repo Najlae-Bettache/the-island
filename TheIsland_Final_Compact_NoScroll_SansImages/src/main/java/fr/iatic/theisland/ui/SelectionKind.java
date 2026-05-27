@@ -1,8 +1,5 @@
 package fr.iatic.theisland.ui;
 
-/**
- * Type de sélection actuellement active dans l'interface.
- */
 public enum SelectionKind {
     NONE,
     EXPLORER,
