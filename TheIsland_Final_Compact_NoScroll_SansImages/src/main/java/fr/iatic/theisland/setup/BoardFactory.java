@@ -7,16 +7,14 @@ import fr.iatic.theisland.model.TerrainTile;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Construit le plateau initial.
- */
+
 public final class BoardFactory {
 
     private static final int ROWS = 11;
     private static final int COLUMNS = 13;
 
     private BoardFactory() {
-        // Classe utilitaire.
+     
     }
 
     public static Board createInitialBoard() {
@@ -33,9 +31,7 @@ public final class BoardFactory {
         return board;
     }
 
-    /**
-     * Zone centrale de 40 cases destinée aux 40 tuiles.
-     */
+   
     static List<HexCoordinate> createInitialIslandSlotCoordinates() {
         List<HexCoordinate> coordinates = new ArrayList<>(40);
 
@@ -54,9 +50,7 @@ public final class BoardFactory {
         return coordinates;
     }
 
-    /**
-     * Abris représentés par deux cases dans chacun des quatre coins.
-     */
+    
     static List<HexCoordinate> createRescueIslandCoordinates() {
         return List.of(
                 new HexCoordinate(0, 1),
@@ -70,9 +64,7 @@ public final class BoardFactory {
         );
     }
 
-    /**
-     * Positions de départ prévues pour les cinq serpents de mer.
-     */
+    
     static List<HexCoordinate> createSeaSerpentSpawnCoordinates() {
         return List.of(
                 new HexCoordinate(1, 6),
