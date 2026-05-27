@@ -7,10 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * Contexte des déplacements d'un joueur sur son tour.
- * Le gestionnaire de tour pourra créer un nouveau contexte à chaque début de phase de déplacement.
- */
+
 public final class MovementContext {
 
     public static final int DEFAULT_MOVEMENT_POINTS = 3;
