@@ -5,13 +5,11 @@ import fr.iatic.theisland.ui.WelcomeFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-/**
- * Point d'entrée du jeu complet.
- */
+
 public final class App {
 
     private App() {
-        // Classe utilitaire.
+       
     }
 
     public static void main(String[] args) {
