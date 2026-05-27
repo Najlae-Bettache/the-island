@@ -9,9 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Tests de création des joueurs et pions.
- */
+
 class GameSetupFactoryTest {
 
     @Test
