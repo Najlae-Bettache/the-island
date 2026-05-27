@@ -8,10 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * État des pions liés aux missions 1 et 2 :
- * joueurs, explorateurs et bateaux.
- */
+
 public final class PieceState {
 
     private final Board board;
