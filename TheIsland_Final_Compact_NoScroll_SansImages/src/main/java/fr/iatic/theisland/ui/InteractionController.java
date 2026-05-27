@@ -32,9 +32,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * Contrôleur principal — Jeu complet.
- */
+
 public final class InteractionController {
 
     private final PieceState state;
@@ -73,9 +71,7 @@ public final class InteractionController {
         this.creatureManager = new CreatureManager();
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // DISPATCH PRINCIPAL
-    // ═══════════════════════════════════════════════════════════════
+    
 
     public void handleCellClick(HexCoordinate coord) {
         Objects.requireNonNull(coord);
@@ -95,9 +91,7 @@ public final class InteractionController {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // SETUP
-    // ═══════════════════════════════════════════════════════════════
+    
 
     public void finishSetupAutomatically() {
         if (phase == DemoPhase.MOVEMENT || phase.ordinal() > DemoPhase.MOVEMENT.ordinal()) {
@@ -174,9 +168,7 @@ public final class InteractionController {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // MISSION 3 — Tuiles rouges jouables en main
-    // ═══════════════════════════════════════════════════════════════
+    
 
     public void skipHandTilePhase() {
         if (phase != DemoPhase.PLAY_HAND_TILE) return;
@@ -363,9 +355,7 @@ public final class InteractionController {
         statusMessage = message + " Phase déplacement : 3 déplacements disponibles.";
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // MISSION 2 — Mouvement
-    // ═══════════════════════════════════════════════════════════════
+    
 
     private void handleMovementClick(HexCoordinate coord) {
         if (selectionKind == SelectionKind.NONE) {
@@ -561,10 +551,6 @@ public final class InteractionController {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // MISSION 3 — Retrait de tuile
-    // ═══════════════════════════════════════════════════════════════
-
     private void handleTileRemovalClick(HexCoordinate coord) {
         TileRemovalService.TileRemovalResult r =
                 tileRemovalService.removeTile(gameState, getActivePlayer(), coord);
@@ -581,10 +567,7 @@ public final class InteractionController {
         statusMessage = r.getMessage() + " Maintenant, lancez le dé de créature.";
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // MISSION 4 — Dé et créature
-    // ═══════════════════════════════════════════════════════════════
-
+   
     public void rollCreatureDice() {
         if (phase != DemoPhase.CREATURE_DICE) {
             statusMessage = "Ce n'est pas le moment de lancer le dé.";
@@ -685,9 +668,7 @@ public final class InteractionController {
         statusMessage = "Sélection annulée.";
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // Helpers
-    // ═══════════════════════════════════════════════════════════════
+    
 
     private List<Boat> allBoatsAt(HexCoordinate coord) {
         Map<String, Boat> unique = new LinkedHashMap<>();
@@ -828,9 +809,7 @@ public final class InteractionController {
         return labelEffect(tile.getHiddenEffect());
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // Getters
-    // ═══════════════════════════════════════════════════════════════
+    
 
     public PieceState getState() { return state; }
     public GameState getGameState() { return gameState; }
