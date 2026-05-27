@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Placement automatique utile pour accélérer les démonstrations.
- */
+
 public final class AutoSetupService {
 
     private final InitialPlacementService placementService;
