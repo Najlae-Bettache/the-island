@@ -31,13 +31,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-/**
- * Plateau interactif du jeu complet :
- * affichage du plateau, des pions, des bateaux, des créatures et des tuiles retirables.
- */
+
 public final class InteractiveBoardPanel extends JPanel {
 
-    // ── Constantes d'affichage ────────────────────────────────────────────────
+    
     private static final int HEX_RADIUS      = 20;
     private static final int HEX_HEIGHT      = (int) Math.round(Math.sqrt(3) * HEX_RADIUS);
     private static final int HORIZONTAL_STEP = (int) Math.round(1.5 * HEX_RADIUS);
@@ -81,7 +78,7 @@ public final class InteractiveBoardPanel extends JPanel {
         });
     }
 
-    // ── Dessin du plateau ─────────────────────────────────────────────────────
+    
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -107,7 +104,7 @@ public final class InteractiveBoardPanel extends JPanel {
         g2.dispose();
     }
 
-    // ── Méthodes de dessin ────────────────────────────────────────────────────
+   
 
     @Override
     public String getToolTipText(MouseEvent event) {
@@ -427,9 +424,7 @@ public final class InteractiveBoardPanel extends JPanel {
     private int centerX(Polygon polygon) { return polygon.getBounds().x + polygon.getBounds().width  / 2; }
     private int centerY(Polygon polygon) { return polygon.getBounds().y + polygon.getBounds().height / 2; }
 
-    // ── Affichage des tuiles retirables et des créatures ──────────────────────
-
-    /** Surligne en rouge les tuiles retirables pendant la phase TILE_REMOVAL. */
+    
     private void drawTileRemovalHighlight(Graphics2D g2, Polygon hexagon, HexCell cell) {
         if (controller.getPhase() != DemoPhase.TILE_REMOVAL) return;
         if (!cell.hasTerrainTile()) return;
@@ -444,7 +439,7 @@ public final class InteractiveBoardPanel extends JPanel {
         g2.setStroke(previous);
     }
 
-    /** Affiche les créatures marines avec une lettre + couleur. */
+    
     private void drawCreatures(Graphics2D g2, Polygon polygon, HexCoordinate coordinate) {
         List<Creature> creatures = gameState.getCreaturesAt(coordinate);
         if (creatures.isEmpty()) return;
@@ -504,7 +499,7 @@ public final class InteractiveBoardPanel extends JPanel {
         g2.drawPolygon(tail);
     }
 
-    /** Vérifie visuellement si une tuile peut être retirée (ordre + adjacence mer). */
+   
     private boolean canRemoveVisually(HexCell cell) {
         if (!cell.hasTerrainTile()) return false;
         Board b = pieceState.getBoard();
