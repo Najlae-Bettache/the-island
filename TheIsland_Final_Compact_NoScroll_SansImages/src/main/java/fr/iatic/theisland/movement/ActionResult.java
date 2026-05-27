@@ -2,9 +2,7 @@ package fr.iatic.theisland.movement;
 
 import java.util.Objects;
 
-/**
- * Résultat d'une action validée par un service.
- */
+
 public final class ActionResult {
 
     private final boolean success;
