@@ -22,16 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * Mission 3 — Retrait des tuiles de terrain.
- *
- * Règles respectées :
- * 1. Ordre : plage → forêt → montagne.
- * 2. La tuile doit être adjacente à une case de mer.
- * 3. Les explorateurs dessus tombent à la mer (nageurs).
- * 4. Effets immédiats (vert) appliqués sur-le-champ.
- * 5. Effets différés (rouge) gardés en main.
- */
+
 public final class TileRemovalService {
 
     /** Vérifie si le retrait est possible (ne modifie rien). */
@@ -59,7 +50,7 @@ public final class TileRemovalService {
         return ActionResult.success("Retrait possible.");
     }
 
-    /** Retire la tuile et applique ses effets. Retourne un résultat descriptif. */
+   
     public TileRemovalResult removeTile(GameState gs, Player activePlayer, HexCoordinate coord) {
         Objects.requireNonNull(gs,           "L'état du jeu est obligatoire.");
         Objects.requireNonNull(activePlayer, "Le joueur actif est obligatoire.");
@@ -72,11 +63,11 @@ public final class TileRemovalService {
         TerrainTile tile = cell.removeTerrainTile();
         TileEffect effect = tile.getHiddenEffect();
 
-        // Explorateurs qui tombent
+       
         List<Explorer> fallen = new ArrayList<>(gs.getPieceState().getLandExplorersAt(coord));
         for (Explorer e : fallen) e.becomeSwimmer(coord);
 
-        // Appliquer l'effet
+        
         String effectMsg = "";
         if (effect.isImmediate()) {
             effectMsg = applyImmediate(gs, activePlayer, coord, effect);
@@ -91,8 +82,7 @@ public final class TileRemovalService {
                 tile, effect);
     }
 
-    // ── Effets immédiats ──────────────────────────────────────────────────────
-
+    
     private String applyImmediate(GameState gs, Player activePlayer,
                                    HexCoordinate coord, TileEffect effect) {
         return switch (effect) {
@@ -208,7 +198,7 @@ public final class TileRemovalService {
         };
     }
 
-    // ── Résultat ──────────────────────────────────────────────────────────────
+   
     public static final class TileRemovalResult {
         private final boolean    success;
         private final String     message;
