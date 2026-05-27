@@ -13,9 +13,6 @@ import fr.iatic.theisland.movement.ActionResult;
 
 import java.util.Objects;
 
-/**
- * Vérifie et applique les placements de la préparation de partie.
- */
 public final class InitialPlacementService {
 
     public ActionResult placeExplorer(
