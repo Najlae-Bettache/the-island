@@ -24,10 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Affichage Swing du plateau et des pions de démonstration.
- * Cette version retire les lettres visibles sur les cases.
- */
+
 public final class BoardPanel extends JPanel {
 
     private static final int HEX_RADIUS = 33;
