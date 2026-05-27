@@ -2,10 +2,7 @@ package fr.iatic.theisland.model;
 
 import java.util.Objects;
 
-/**
- * Tuile de terrain placée sur l'île.
- * Chaque tuile possède un effet caché révélé lors du retrait (mission 3).
- */
+
 public final class TerrainTile {
 
     private final TerrainType type;
